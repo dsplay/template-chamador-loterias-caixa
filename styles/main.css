@@ -21,7 +21,7 @@ body {
   height: 100%;
   overflow: hidden;
   background-size: cover;
-  background-image: url('../assets/images/backgroud_chamador.jpg');
+  background-image: url('../assets/image/backgroud_chamador.jpg');
 }
 
 #senha {

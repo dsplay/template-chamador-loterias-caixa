@@ -1,0 +1,35 @@
+<!doctype html>
+<html ng-app="TicketApp">
+
+<head>
+  <title>DSPLAY - Chamador Loterias Caixa</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="format-detection" content="email=no" />
+  <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+  <div id="mainDiv">
+
+    <div id="senha">CAIXA LIVRE</div>
+    <div id="numero" ng-controller="TicketController">
+      {{text}}
+    </div>
+    <audio src="assets/audio/bell-01.mp3" autoplay></audio>
+  </div>
+  <!-- import core-js (try to use the latest version) -->
+  <script src="scripts/core-js-3.6.4.js"></script>
+  <!-- import dsplay-data.js -->
+  <script src="scripts/dsplay-data.js"></script>
+  <!-- import dsplay-template-utils. (get the latest version from https://unpkg.com/@dsplay/template-utils) -->
+  <script src="scripts/dsplay-template-utils.js"></script>
+  <!-- import other libs -->
+  <script src="scripts/angular.min.js"></script>
+  <!-- import your main script file after -->
+  <script src="scripts/app.js"></script>
+</body>
+
+</html>

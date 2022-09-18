@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+  background-color: #000;
+  font-family: 'myFutura', sans-serif;
+  text-shadow: .1em .1em .3em #000000;
+  color: white;
+}
+
+@font-face {
+  font-family: myFutura;
+  src: url("../assets/fonts/FuturaExtraBlackCondensedBT.ttf");
+}
+
+#mainDiv {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-image: url('../assets/images/backgroud_chamador.jpg');
+}
+
+#senha {
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  opacity: .95;
+  top: 5%;
+  text-align: center;
+  font-size: 5em;
+}
+
+
+#numero {
+  position: absolute;
+  left: 0;
+  bottom: 2%;
+  width: 100%;
+  height: 80%;
+  padding-left: 0%;
+  padding-right: 0%;
+  text-align: center;
+  font-size: 15em;
+  color: #FEE105;
+  -webkit-animation: slideIn .5s ease-out;
+  animation: slideIn .5s ease-out;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes slideIn {
+  from {
+    left: 110%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    left: 110%;
+  }
+}

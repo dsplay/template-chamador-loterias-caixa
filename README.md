@@ -2,4 +2,4 @@
 
 # DSPLAY - Chamador Loterias Caixa
 
-![Screenshot](docs/images/template-chamador-loterias-caixa.png)
+![Screenshot](docs/images/screenshot.png)

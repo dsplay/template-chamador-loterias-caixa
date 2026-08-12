@@ -1,0 +1,9 @@
+{
+  "name": "dsplay-template-chamador-loterias-caixa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Packaging-time tooling only - the template itself has no build step, see AGENTS.md",
+  "devDependencies": {
+    "@dsplay/template-manifest": "^1.0.2"
+  }
+}

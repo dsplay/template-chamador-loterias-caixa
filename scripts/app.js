@@ -1,11 +1,7 @@
 "use strict";
 
 (function () {
-  // here we can apply use DSPLAY values to your template
   var u = dsplayTemplateUtils;
-
-  // Include app dependency on ngMaterial
-  var app = angular.module('TicketApp', []);
 
   var input = u.media.buffer;
 
@@ -19,13 +15,9 @@
     }
   }
 
-  if (result.length == 1) {
+  if (result.length === 1) {
     result = '0' + result;
   }
 
-  app.controller('TicketController', function ($scope) {
-    console.log($scope);
-    $scope.text = result;
-  });
-
+  document.getElementById('numero').textContent = result;
 })();

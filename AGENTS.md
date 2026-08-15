@@ -24,9 +24,10 @@ assets/
   fonts/FuturaExtraBlackCondensedBT.ttf
   image/                            <-- background image + favicon
   video/                            <-- currently empty
+test/basic.test.js                  <-- smoke tests (see "Testing" below)
 pack.sh                             <-- generates the manifest and zips the template for upload to DSPLAY Web Manager
 update-deps.sh                      <-- updates vendored dependencies (boilerplate maintainers only, see below)
-package.json                        <-- packaging-time devDependency only (@dsplay/template-manifest), not a build step
+package.json                        <-- packaging-time devDependencies only (@dsplay/template-manifest, node:test via "test"), not a build step
 scripts/.vendored-versions.json     <-- tracks the currently-vendored version of each dep for update-deps.sh
 ```
 
@@ -38,6 +39,10 @@ scripts/.vendored-versions.json     <-- tracks the currently-vendored version of
 - `scripts/core-js-<version>.js` is a vendored polyfill bundle for older WebViews used by DSPLAY devices.
 
 Script load order in `index.html` matters: `core-js` → `dsplay-data.js` → `dsplay-template-utils.js` → `app.js`.
+
+## Testing
+
+`npm test` runs `node --test` against `test/basic.test.js` — three smoke tests using only Node's built-in `node:test`/`node:assert`/`node:vm` (no Vitest/jsdom; this template deliberately has no bundler). See `template-boilerplate-javascript`'s AGENTS.md for what each test checks and why — this file is copied verbatim from there. (`dsplay_template` being an empty `{}` here, per the note above, still passes the "defined as an object" check.)
 
 ## History
 

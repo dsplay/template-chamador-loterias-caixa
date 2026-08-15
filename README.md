@@ -14,17 +14,17 @@ This template has no configurable Template Vars — the displayed number comes e
 
 ```sh
 npm install
-python3 -m http.server
+npm start
 ```
 
-then visit `http://localhost:8000`.
+then visit `http://localhost:3000` (visit the root URL, not `http://localhost:3000/index.html` directly — the reload script is only injected on that path). The page auto-reloads whenever you edit and save a file.
 
 `scripts/dsplay-data.js` defines `dsplay_config`/`dsplay_media`/`dsplay_template` mock globals used only when the template isn't running inside the actual DSPLAY app. Edit `dsplay_media.buffer` to try out different queue numbers — the DSPLAY Player App replaces it with the real value at runtime.
 
 ## Generating the template package
 
 ```sh
-./pack.sh
+npm run zip
 ```
 
 This first runs [`dsplay-scan-template`](https://www.npmjs.com/package/@dsplay/template-manifest) (from `@dsplay/template-manifest`), which statically scans `scripts/app.js` and captures `dsplay-data.js` as example data — writing `template-variables.json` + `template-example-data.json` to the project root (both are near-empty here, see above). It then zips `index.html`, `assets/`, `scripts/`, `styles/`, and the two generated JSON files into `template.zip`.

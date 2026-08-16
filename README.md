@@ -4,7 +4,11 @@
 
 A Vanilla JavaScript [HTML-based template](https://developers.dsplay.tv/docs/html-templates) for the [DSPLAY - Digital Signage](https://dsplay.tv/) platform — displays a "now calling" queue/ticket number for Caixa Econômica Federal lottery terminals, with a bell sound on load.
 
-![Screenshot](docs/images/screenshot.png)
+## Supported screen formats
+
+| Landscape | Portrait | Square |
+|-----------|----------|--------|
+| ![Landscape](docs/screenshots/landscape.png) | ![Portrait](docs/screenshots/portrait.png) | ![Square](docs/screenshots/square.png) |
 
 ## Template variables
 

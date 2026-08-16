@@ -38,7 +38,7 @@ scripts/.vendored-versions.json     <-- tracks the currently-vendored version of
 ## Runtime model
 
 - `scripts/dsplay-data.js` defines `dsplay_config`, `dsplay_media`, and `dsplay_template` globals used only in **development**. Its contents are ignored at runtime on the actual DSPLAY device/app.
-- `scripts/dsplay-template-utils.js` (the `@dsplay/template-utils` UMD bundle) exposes `window.dsplayTemplateUtils` with `media`, `config`, `template`, `DSPLAY`, and the `tval`/`tbval`/`tival`/`tfval`/`isVertical` helpers.
+- `scripts/dsplay-template-utils.js` (the [`@dsplay/template-utils`](https://github.com/dsplay/template-utils) UMD bundle) exposes `window.dsplayTemplateUtils` with `media`, `config`, `template`, `DSPLAY`, and the `tval`/`tbval`/`tival`/`tfval`/`isVertical` helpers.
 - `scripts/app.js` reads `dsplayTemplateUtils.media.buffer` (a string, e.g. `"42"`), strips any non-digit characters, zero-pads a single-digit result, and writes it into `#numero`'s `textContent`. This template has **no `dsplay_template` variables at all** — confirmed against the CMS's actual registration (see below) — it's driven entirely by `media.buffer`.
 - `scripts/core-js-<version>.js` is a vendored polyfill bundle for older WebViews used by DSPLAY devices.
 
@@ -46,7 +46,7 @@ Script load order in `index.html` matters: `core-js` → `dsplay-data.js` → `d
 
 ## Testing
 
-`npm test` runs `node --test` against `test/basic.test.js` — three smoke tests using only Node's built-in `node:test`/`node:assert`/`node:vm` (no Vitest/jsdom; this template deliberately has no bundler). See `template-boilerplate-javascript`'s AGENTS.md for what each test checks and why — this file is copied verbatim from there. (`dsplay_template` being an empty `{}` here, per the note above, still passes the "defined as an object" check.)
+`npm test` runs `node --test` against `test/basic.test.js` — three smoke tests using only Node's built-in `node:test`/`node:assert`/`node:vm` (no Vitest/jsdom; this template deliberately has no bundler). See [`template-boilerplate-javascript`](https://github.com/dsplay/template-boilerplate-javascript)'s AGENTS.md for what each test checks and why — this file is copied verbatim from there. (`dsplay_template` being an empty `{}` here, per the note above, still passes the "defined as an object" check.)
 
 ## History
 
@@ -67,7 +67,7 @@ Every DSPLAY template's `README.md` follows the same skeleton (see `template-boi
 
 ## Dependency management (boilerplate maintainers only)
 
-The *template's own* runtime code has no `npm install` step — third-party code it uses (`core-js`, `dsplay-template-utils.js`) is vendored directly into `scripts/` as pre-built bundles fetched from a CDN, not installed via npm. `npm install` in this repo installs devDependencies for tooling around the template (`@dsplay/template-manifest` for `npm run zip`, `servor` for `npm start`).
+The *template's own* runtime code has no `npm install` step — third-party code it uses (`core-js`, `dsplay-template-utils.js`) is vendored directly into `scripts/` as pre-built bundles fetched from a CDN, not installed via npm. `npm install` in this repo installs devDependencies for tooling around the template ([`@dsplay/template-manifest`](https://github.com/dsplay/template-manifest) for `npm run zip`, `servor` for `npm start`).
 
 Run `npm run update-deps` (wraps `./update-deps.sh`) to update the vendored bundles. For each dependency it fetches the latest published version from the npm registry, compares it against `scripts/.vendored-versions.json`, and:
 - if it's a **major** version bump, skips it and prints a warning — needs a human to review the changelog first. Never bypass this guard as an agent; surface the warning to the user instead.

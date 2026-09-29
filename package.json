@@ -10,7 +10,7 @@
     "test": "node --test"
   },
   "devDependencies": {
-    "@dsplay/template-manifest": "^1.0.4",
-    "servor": "^4.0.2"
+    "@dsplay/template-manifest": "1.0.4",
+    "servor": "4.0.2"
   }
 }

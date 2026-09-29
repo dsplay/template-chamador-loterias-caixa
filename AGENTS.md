@@ -82,6 +82,13 @@ Run `npm install` once, then `npm run zip` (wraps `./pack.sh`). It first runs `d
 
 `template.zip`, `node_modules/`, and the two generated JSON files are gitignored and should never be committed — `npm run zip` regenerates them every run.
 
+## Supply chain hardening
+
+- `.npmrc` sets `ignore-scripts=true` (no dependency lifecycle scripts run on install), `min-release-age=3` (npm refuses versions younger than 3 days) and `save-exact=true`.
+- **Dependencies must ALWAYS be pinned to an exact version** — never `^`, `~`, `>=`, `latest` or any other range, in `dependencies` and `devDependencies` alike. When adding or bumping a package, use `npm install <pkg>@<version>` (`save-exact=true` in `.npmrc` handles it) and check `package.json` afterwards; fix any range that slips in. `test/sanity.test.js` enforces this, plus `.npmrc` and Dependabot settings.
+- `.github/dependabot.yml` uses a 3-day cooldown (7 days for majors). It only covers npm packages, not the vendored bundles in `scripts/` (those are updated via `npm run update-deps`).
+- Currently no dependency needs its install script. If one ever does, add a `setup` script (`npm install && npm rebuild <pkg>`) and document it in README.md.
+
 ## Commit messages
 
 Every commit title must start with an emoji, followed by a short, imperative summary — e.g. `⬆️ update core-js to 3.50.0`.

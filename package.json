@@ -5,12 +5,13 @@
   "description": "Tooling around the template only (dev server, packaging, tests) - the template itself has no build step, see AGENTS.md",
   "scripts": {
     "start": "servor . index.html 3000 --reload --browse",
-    "zip": "./pack.sh",
+    "zip": "node pack.mjs",
     "update-deps": "./update-deps.sh",
     "test": "node --test"
   },
   "devDependencies": {
     "@dsplay/template-manifest": "1.0.4",
+    "archiver": "7.0.1",
     "servor": "4.0.2"
   }
 }

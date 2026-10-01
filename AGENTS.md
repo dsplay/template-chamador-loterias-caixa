@@ -25,7 +25,7 @@ assets/
   image/                            <-- background image + favicon
   video/                            <-- currently empty
 test/basic.test.js                  <-- smoke tests (see "Testing" below)
-pack.sh                             <-- generates the manifest and zips the template for upload to DSPLAY Web Manager (wrapped by `npm run zip`)
+pack.mjs                             generates the manifest and zips the template for upload to DSPLAY Web Manager (wrapped by `npm run zip`) (Windows/macOS/Linux)
 update-deps.sh                      <-- updates vendored dependencies (boilerplate maintainers only, see below; wrapped by `npm run update-deps`)
 package.json                        <-- devDependencies only (@dsplay/template-manifest for "zip", servor for "start", node:test for "test"), not a build step
 scripts/.vendored-versions.json     <-- tracks the currently-vendored version of each dep for update-deps.sh
@@ -78,7 +78,7 @@ After running it, sanity check with `npm start` and confirming the page loads wi
 
 ## Packing / deployment
 
-Run `npm install` once, then `npm run zip` (wraps `./pack.sh`). It first runs `dsplay-scan-template`, which statically scans `scripts/app.js` and captures `dsplay-data.js` as example data — writing `template-variables.json` + `template-example-data.json` to the project root (both will be empty/near-empty here, since this template has no `dsplay_template` variables). It then zips `index.html`, `assets/`, `scripts/`, `styles/`, and those two generated files into `template.zip`, ready to upload to the [DSPLAY Web Manager](https://manager.dsplay.tv/template/create).
+Run `npm install` once, then `npm run zip` (wraps `pack.mjs`). It first calls `@dsplay/template-manifest`'s `generateManifest()`, which statically scans `scripts/app.js` and captures `dsplay-data.js` as example data — writing `template-variables.json` + `template-example-data.json` to the project root (both will be empty/near-empty here, since this template has no `dsplay_template` variables). It then zips `index.html`, `assets/`, `scripts/`, `styles/`, and those two generated files into `template.zip`, ready to upload to the [DSPLAY Web Manager](https://manager.dsplay.tv/template/create).
 
 `template.zip`, `node_modules/`, and the two generated JSON files are gitignored and should never be committed — `npm run zip` regenerates them every run.
 

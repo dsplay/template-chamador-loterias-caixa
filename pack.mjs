@@ -4,7 +4,7 @@
 // under Git Bash), so `npm run zip` simply didn't work there.
 import { createWriteStream, existsSync, rmSync, statSync } from 'node:fs';
 import { resolve } from 'node:path';
-import archiver from 'archiver';
+import { ZipArchive } from 'archiver';
 import { generateManifest } from '@dsplay/template-manifest';
 
 // Statically scans scripts/app.js for dsplayTemplateUtils.tval/tbval/tival/tfval calls and
@@ -20,7 +20,7 @@ rmSync(zipPath, { force: true });
 const INPUT = ['index.html', 'assets', 'scripts', 'styles', 'template-variables.json', 'template-example-data.json'];
 
 const output = createWriteStream(zipPath);
-const archive = archiver('zip');
+const archive = new ZipArchive();
 
 output.on('close', () => console.log('template.zip generated with success!'));
 archive.on('warning', (err) => { throw err; });

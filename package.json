@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@dsplay/template-manifest": "1.0.4",
-    "archiver": "7.0.1",
+    "archiver": "8.0.0",
     "servor": "4.0.2"
   }
 }
